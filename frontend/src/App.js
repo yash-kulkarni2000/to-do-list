@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, use} from "react";
 import axios from 'axios';
 
 function App() {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
+  const [editingTask, setEditingTask] = useState(null);
+  const [editedTaskTitle, setEditedTaskTitle] = useState('');
 
   useEffect(() => {
     axios.get('http://127.0.0.1:5000/tasks').then(response => {
@@ -34,7 +36,29 @@ function App() {
             ));
         })
         .catch(error => console.error('Error updating task:', error));
-};
+  };
+
+  const startEdit = (id, title) => {
+    setEditingTask(id);
+    setEditedTaskTitle(title);
+  }
+
+  const saveEdit = (id) => {
+    axios.put(`http://127.0.0.1:5000/tasks/${id}`, {title: editedTaskTitle}).then(response => {
+      setTasks(tasks.map(task =>
+        task.id === id ? {...task, title: response.data.title} : task
+      ));
+      setEditingTask(null);
+      setEditedTaskTitle('');
+    })
+    .catch(error => console.error('Error updating task:', error));
+  };
+
+  const cancelEdit = () => {
+    setEditingTask(null);
+    setEditedTaskTitle('');
+  }
+
 
   return (
     <div className="App">
@@ -48,10 +72,21 @@ function App() {
       <ul>
         {tasks.map(task => (
           <li key={task.id}>
-          <label>
+          {editingTask === task.id ? (
+            <>
+              <input type="text" value={editedTaskTitle} onChange={(e) => setEditedTaskTitle(e.target.value)}/>
+            
+            <button onClick={() => saveEdit(task.id)}>Save</button>
+            <button onClick={cancelEdit}>Cancel</button>
+            </>
+          ):(
+            <>
+              {task.title} - {task.completed ? "Completed" : "Pending"}
+              <button onClick={() => startEdit(task.id, task.title)}>Edit</button>
+            </>
+          )}
             <input type="checkbox" checked={task.completed} onChange={() => toggleTaskCompletion(task.id, task.completed)}/>
-            {task.title} - {task.completed ? "Completed" : "Pending"}
-          </label></li>
+          </li>
         ))}
       </ul>
     </div>
