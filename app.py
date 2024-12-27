@@ -28,10 +28,10 @@ def add_task():
     db.session.commit()
     return jsonify({'id': new_task.id, 'title': new_task.title, 'completed':new_task.completed}), 201
 
-@app.route('/tasks/<int:id>', methods=['PUT'])
+@app.route('/tasks/<int:id>', methods=['GET', 'PUT'])
 def update_task(id):
     task = Task.query.get_or_404(id)
-    data = request.json
+    data = request.get_json()
     task.title = data.get('title', task.title)
     task.completed = data.get('completed', task.completed)
     db.session.commit()
