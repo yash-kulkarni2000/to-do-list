@@ -38,6 +38,14 @@ function App() {
         .catch(error => console.error('Error updating task:', error));
   };
 
+  const deleteTask = (id) => {
+    axios.delete(`http://127.0.0.1:5000/tasks/${id}`).then(response => {
+      console.log(response.data.message);
+      setTasks(tasks.filter(task => task.id !== id));
+    })
+    .catch(error => console.error('Error deleting task:', error));
+  };
+
   const startEdit = (id, title) => {
     setEditingTask(id);
     setEditedTaskTitle(title);
@@ -83,6 +91,7 @@ function App() {
             <>
               {task.title} - {task.completed ? "Completed" : "Pending"}
               <button onClick={() => startEdit(task.id, task.title)}>Edit</button>
+              <button onClick={() => deleteTask(task.id)}>Delete</button>
             </>
           )}
             <input type="checkbox" checked={task.completed} onChange={() => toggleTaskCompletion(task.id, task.completed)}/>
