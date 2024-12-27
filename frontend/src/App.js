@@ -1,5 +1,20 @@
-import React, {useState, useEffect, use} from "react";
+import React, {useState, useEffect} from "react";
 import axios from 'axios';
+import {
+  Button,
+  Checkbox,
+  Container,
+  TextField,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+  Box,
+} from '@mui/material';
+import { Edit, Delete, Download, Save, Cancel } from '@mui/icons-material';
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -67,38 +82,84 @@ function App() {
     setEditedTaskTitle('');
   }
 
+  const handleDownload = () => {
+    window.open('http://127.0.0.1:5000/download', '_blank');
+  };
 
   return (
-    <div className="App">
-      <h1>To-Do List App</h1>
-      <div>
-        <input type="text" placeholder="Enter a new task" value={newTask} onChange={(e) => setNewTask(e.target.value)}/>
-        <button onClick={handleAddTask}>Add Task</button>
-      </div>
+    <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
+      <Typography variant="h4" align="center" gutterBottom>
+        To-Do List App
+      </Typography>
+      <Box display="flex" gap={2} mb={3}>
+        <TextField
+          label="Enter a new task"
+          variant="outlined"
+          fullWidth
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+        />
+        <Button variant="contained" color="primary" onClick={handleAddTask}>
+          Add Task
+        </Button>
+      </Box>
 
-      <h2>The tasks are - </h2>
-      <ul>
+      <Typography variant="h6">The tasks are:</Typography>
+      <List>
         {tasks.map(task => (
-          <li key={task.id}>
-          {editingTask === task.id ? (
-            <>
-              <input type="text" value={editedTaskTitle} onChange={(e) => setEditedTaskTitle(e.target.value)}/>
-            
-            <button onClick={() => saveEdit(task.id)}>Save</button>
-            <button onClick={cancelEdit}>Cancel</button>
-            </>
-          ):(
-            <>
-              {task.title} - {task.completed ? "Completed" : "Pending"}
-              <button onClick={() => startEdit(task.id, task.title)}>Edit</button>
-              <button onClick={() => deleteTask(task.id)}>Delete</button>
-            </>
-          )}
-            <input type="checkbox" checked={task.completed} onChange={() => toggleTaskCompletion(task.id, task.completed)}/>
-          </li>
+          <ListItem key={task.id} divider>
+          <Checkbox
+                  checked={task.completed}
+                  onChange={() => toggleTaskCompletion(task.id, task.completed)}
+                />
+            {editingTask === task.id ? (
+              <>
+                <TextField
+                  value={editedTaskTitle}
+                  onChange={(e) => setEditedTaskTitle(e.target.value)}
+                  variant="outlined"
+                  fullWidth
+                />
+                <ListItemSecondaryAction>
+                  <IconButton color="success" onClick={() => saveEdit(task.id)}>
+                    <Save />
+                  </IconButton>
+                  <IconButton color="secondary" onClick={cancelEdit}>
+                    <Cancel />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </>
+            ) : (
+              <>
+                <ListItemText
+                  primary={task.title}
+                  secondary={task.completed ? 'Completed' : 'Pending'}
+                />
+                <ListItemSecondaryAction>
+                  <IconButton color="primary" onClick={() => startEdit(task.id, task.title)}>
+                    <Edit />
+                  </IconButton>
+                  <IconButton color="error" onClick={() => deleteTask(task.id)}>
+                    <Delete />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </>
+            )}
+          </ListItem>
         ))}
-      </ul>
-    </div>
+      </List>
+
+      <Box textAlign="center" mt={4}>
+        <Button
+          variant="contained"
+          color="secondary"
+          startIcon={<Download />}
+          onClick={handleDownload}
+        >
+          Download Tasks
+        </Button>
+      </Box>
+    </Container>
   );
 }
 
