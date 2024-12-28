@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# To-Do List App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple and intuitive To-Do List application built using React and Flask. This app allows users to manage tasks efficiently with features like adding, editing, deleting, marking tasks as completed, and downloading task reports.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Add tasks
+- Edit task titles and completion status.
+- Delete tasks.
+- Mark tasks as completed or pending.
+- Download all tasks as a `.docx` report.
+- Dynamic and responsive UI built with Material-UI.
+- Backend powered by Flask and SQLite for data persistence.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation and Setup
 
-### `npm test`
+### **Frontend (React)**
+1. Clone the repository:
+   git clone https://github.com/<your-github-username>/<repository-name>.git
+   cd <repository-name>/frontend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Set up a virtual environment:
+    python -m venv venv
+    source venv/bin/activate  
+    # On Windows: venv\Scripts\activate
 
-### `npm run build`
+3. Install dependencies:
+    pip install -r requirements.txt
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Start the Flask server:
+    python app.py
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The backend will be available at http://127.0.0.1:5000.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### ** Usage **
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Open the frontend at http://localhost:3000.
+Use the interface to manage tasks:
+Add new tasks using the input field and "Add Task" button.
+Edit tasks by clicking the "Edit" button.
+Mark tasks as completed or pending using the checkbox.
+Delete tasks by clicking the "Delete" button.
+Download all tasks as a .docx file using the "Download" button.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### ** Technologies Used **
+Frontend: React, Material-UI
+Backend: Flask, SQLite, python-docx (for generating .docx reports)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### ** Contributing **
+Contributions are welcome! Follow these steps to contribute:
 
-## Learn More
+1. Fork the repository.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. Create a new branch:
+    git checkout -b feature-name
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. Commit your changes:
+    git commit -m "Add feature-name"
 
-### Code Splitting
+4. Push to your branch:
+    git push origin feature-name
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+5. Open a pull request.
 
-### Analyzing the Bundle Size
+## ** Contact **
+For any questions or suggestions, feel free to reach out:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Email: y.kulkarni2000@gmail.com
+GitHub: yash-kulkarni2000
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
