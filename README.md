@@ -4,6 +4,12 @@ A simple and intuitive To-Do List application built using React and Flask. This 
 
 ---
 
+## Screenshots
+
+### Home Page
+![Home Page](screenshots/home-page.png)
+
+
 ## Features
 
 - Add tasks
@@ -63,29 +69,6 @@ Frontend: React, Material-UI
 Backend: Flask, SQLite, python-docx (for generating .docx reports)
 
 
-### **Folder Structure**
-<repository-name>
-│
-├── frontend
-│   ├── public
-│   ├── src
-│   │   ├── components
-│   │   ├── App.js
-│   │   ├── index.js
-│   │   └── ...
-│   ├── package.json
-│   └── ...
-│
-├── backend
-│   ├── instance
-│   │   └── tasks.db
-│   ├── app.py
-│   ├── requirements.txt
-│   └── ...
-│
-└── README.md
-
-
 ### **Contributing**
 Contributions are welcome! Follow these steps to contribute:
 
@@ -102,7 +85,7 @@ Contributions are welcome! Follow these steps to contribute:
 
 5. Open a pull request.
 
-## ** Contact **
+## **Contact**
 For any questions or suggestions, feel free to reach out:
 
 Email: y.kulkarni2000@gmail.com
