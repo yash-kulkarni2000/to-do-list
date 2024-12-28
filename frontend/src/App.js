@@ -89,7 +89,7 @@ function App() {
   return (
     <Container maxWidth="sm" style={{ marginTop: '2rem' }}>
       <Typography variant="h4" align="center" gutterBottom>
-        To-Do List App
+        To-Do List
       </Typography>
       <Box display="flex" gap={2} mb={3}>
         <TextField
@@ -100,7 +100,7 @@ function App() {
           onChange={(e) => setNewTask(e.target.value)}
         />
         <Button variant="contained" color="primary" onClick={handleAddTask}>
-          Add Task
+          +
         </Button>
       </Box>
 
