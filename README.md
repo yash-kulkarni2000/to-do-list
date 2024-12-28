@@ -20,13 +20,24 @@ A simple and intuitive To-Do List application built using React and Flask. This 
 
 ### **Frontend (React)**
 1. Clone the repository:
-   git clone https://github.com/<your-github-username>/<repository-name>.git
-   cd <repository-name>/frontend
+   git clone https://github.com/yash-kulkarni2000/to-do-list.git
+   cd to-do-list/frontend
+
+2. Install dependencies:
+   npm install
+
+3. Start the development server:
+   npm start
+
+The React app will be available at http://localhost:3000.
+
+### **Backend (Flask)**
+1. Navigate to the backend folder:
+   cd ../backend
 
 2. Set up a virtual environment:
     python -m venv venv
-    source venv/bin/activate  
-    # On Windows: venv\Scripts\activate
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 3. Install dependencies:
     pip install -r requirements.txt
@@ -37,7 +48,7 @@ A simple and intuitive To-Do List application built using React and Flask. This 
 The backend will be available at http://127.0.0.1:5000.
 
 
-### ** Usage **
+### **Usage**
 
 Open the frontend at http://localhost:3000.
 Use the interface to manage tasks:
@@ -47,12 +58,35 @@ Mark tasks as completed or pending using the checkbox.
 Delete tasks by clicking the "Delete" button.
 Download all tasks as a .docx file using the "Download" button.
 
-### ** Technologies Used **
+### **Technologies Used**
 Frontend: React, Material-UI
 Backend: Flask, SQLite, python-docx (for generating .docx reports)
 
 
-### ** Contributing **
+### **Folder Structure**
+<repository-name>
+│
+├── frontend
+│   ├── public
+│   ├── src
+│   │   ├── components
+│   │   ├── App.js
+│   │   ├── index.js
+│   │   └── ...
+│   ├── package.json
+│   └── ...
+│
+├── backend
+│   ├── instance
+│   │   └── tasks.db
+│   ├── app.py
+│   ├── requirements.txt
+│   └── ...
+│
+└── README.md
+
+
+### **Contributing**
 Contributions are welcome! Follow these steps to contribute:
 
 1. Fork the repository.
